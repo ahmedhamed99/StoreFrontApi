@@ -1,9 +1,27 @@
 # Storefront Backend Project
 
-## Getting Started
+## Installation & Local Run
+Ensure you have node 10 or higher.
 
-- Connect to data base using pool from pg library set your environement variables in .env file containig (database_host,database_db,database,test_db,database_user,database_password,ENV) ENV is used to switch between dev and test databases.
+1. `npm install`
+2. `npm run start`
 
-- Application is running on port 3000 and database is running on port 5432
+## Database setup example
+1. run `psql postgres` 
+2. `CREATE USER shopping_user WITH PASSWORD 'password123';`
+3. `CREATE DATABASE storefront_db;`
+4. `CREATE DATABASE storefront_test_db;`
+5. `\c shopping`
+6. `GRANT ALL PRIVILEGES ON DATABASE storefront_db TO shopping_user;`
+6. `GRANT ALL PRIVILEGES ON DATABASE storefront_test_db TO shopping_user;`
 
-- run npm i to install packages
+## Environment Variables
+- POSTGRES_HOST
+- POSTGRES_DB
+- POSTGRES_TEST_DB
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- ENV
+- BCRYPT_PASSWORD
+- SALT_ROUNDS
+- TOKEN_SECRET

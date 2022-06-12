@@ -20,26 +20,27 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Current Order by user (args: user id)[token required] /users/:id/current-orders
 - [OPTIONAL] Completed Orders by user (args: user id)[token required] /users/:id/completed-orders
 
-## Data Shapes
+## Database Schema
 #### Product
--  id
-- name
-- price
-- [OPTIONAL] category
+-  id SERIAL PRIMARY KEY
+- name VARCAHR
+- price integer
+- [OPTIONAL] category VARCHAR
 
 #### User
-- id
-- firstName
-- lastName
-- password
+- id SERIAL PRIMARY KEY
+- firstName VARCHAR
+- lastName VARCHAR
+- password VARCHAR
 
 #### Orders
-- id
-- user_id
-- status of order (active or complete)
+- id SERIAL PRIMARY KEY
+- user_id bigint REFERENCES users(id)
+- status of order (active or complete) VARCHAR
 
 #### AddProducts
-- id
-- user_id
-- product_id
-- quantity
+- id SERIAL PRIMARY KEY
+- user_id bigint REFERENCES users(id)
+- product_id bigint REFERENCES products(id)
+- quantity integer
+
