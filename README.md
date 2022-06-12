@@ -16,12 +16,12 @@ Ensure you have node 10 or higher.
 6. `GRANT ALL PRIVILEGES ON DATABASE storefront_test_db TO shopping_user;`
 
 ## Environment Variables
-- POSTGRES_HOST
-- POSTGRES_DB
-- POSTGRES_TEST_DB
-- POSTGRES_USER
-- POSTGRES_PASSWORD
-- ENV
-- BCRYPT_PASSWORD
-- SALT_ROUNDS
-- TOKEN_SECRET
+- POSTGRES_HOST=localhost
+- POSTGRES_DB=storefront_db
+- POSTGRES_TEST_DB=storefront_test_db
+- POSTGRES_USER=shopping_user
+- POSTGRES_PASSWORD=password123
+- ENV=dev
+- BCRYPT_PASSWORD=speak-friend-and-enter
+- SALT_ROUNDS=10
+- TOKEN_SECRET=hamada!
