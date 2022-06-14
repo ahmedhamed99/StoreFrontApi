@@ -14,6 +14,7 @@ Ensure you have node 10 or higher.
 5. `\c shopping`
 6. `GRANT ALL PRIVILEGES ON DATABASE storefront_db TO shopping_user;`
 6. `GRANT ALL PRIVILEGES ON DATABASE storefront_test_db TO shopping_user;`
+7. Database is running on port 5432
 
 ## Environment Variables
 - POSTGRES_HOST=localhost

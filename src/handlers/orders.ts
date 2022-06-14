@@ -73,11 +73,11 @@ const addProduct = async(req: Request, res: Response): Promise<void> => {
 }
 
 const orderRoutes = (app: express.Application) => {
-    app.get('/orders',index);
-    app.get('/orders/:id',show);
+    app.get('/orders',verifyAuthToken,index);
+    app.get('/orders/:id',verifyAuthToken,show);
     app.post('/orders',verifyAuthToken,create);
     app.post('/orders/:id/products',verifyAuthToken,addProduct);
-    app.delete('/orders/:id',destroy);
+    app.delete('/orders/:id',verifyAuthToken,destroy);
 }
 
 export default orderRoutes;

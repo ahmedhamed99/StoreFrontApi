@@ -5,52 +5,53 @@ const request = supertest(app);
 
 var token: string;
 
-describe("Test products endpoints", () => {
+describe("Test orders endpoints", () => {
     beforeAll(async () => {
         const response = await request.post('/users').send({ firstName: "ahmed", lastName: "hamed", username: "ahmed", password: "ahmed" });
         token = response.body;
     });
-    const product = { name: "test", price: 10, category: "test" };
-    it("test response for '/products' POST", async (done) => {
-        const response = await request.post('/products').send(product).set('Authorization', 'Bearer ' + token);
+    const order = { status: "open", user_id: "1"};
+    it("test response for '/orders' POST", async (done) => {
+        const response = await request.post('/orders').send(order).set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual({
             id: 1,
-            ...product
+            ...order
         });
         done();
     });
 
-    it("test response for '/products' GET", async (done) => {
-        const response = await request.get('/products');
+    it("test response for '/orders' GET", async (done) => {
+        const response = await request.get('/orders').set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual([{
             id: 1,
-            ...product
+            ...order
         }]);
         done();
     });
 
-    it("test response for '/products/:id' GET", async (done) => {
-        const response = await request.get(`/products/1`);
+    it("test response for '/orders/:id' GET", async (done) => {
+        const response = await request.get(`/orders/1`).set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual({
             id: 1,
-            ...product
+            ...order
         });
         done();
     });
 
-    it("test response for '/products/:id' DELETE", async (done) => {
-        const response = await request.delete(`/products/1`);
+    it("test response for '/orders/:id' DELETE", async (done) => {
+        const response = await request.delete(`/orders/1`).set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual({
             id: 1,
-            ...product
+            ...order
         });
         done();
     });
     afterAll(async () => {
-        await request.delete('/users/2').set('Authorization', 'Bearer ' + token);
+        await request.delete('/users/1').set('Authorization', 'Bearer ' + token);
     });
 });
+

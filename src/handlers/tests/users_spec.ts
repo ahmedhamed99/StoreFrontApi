@@ -25,7 +25,7 @@ describe("Test users endpoints", () => {
         const response = await request.get('/users').set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual([{
-            id: 2,
+            id: 3,
             firstname: "ahmed",
             lastname: "hamed",
             username: "ahmed"
@@ -34,10 +34,10 @@ describe("Test users endpoints", () => {
     });
 
     it("test response for '/users:id' GET", async (done) => {
-        const response = await request.get(`/users/2`).set('Authorization', 'Bearer ' + token);
+        const response = await request.get(`/users/3`).set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual({
-            id: 2,
+            id: 3,
             firstname: "ahmed",
             lastname: "hamed",
             username: "ahmed"
@@ -46,10 +46,10 @@ describe("Test users endpoints", () => {
     });
 
     it("test response for '/users:id' DELETE", async (done) => {
-        const response = await request.delete(`/users/2`).set('Authorization', 'Bearer ' + token);
+        const response = await request.delete(`/users/3`).set('Authorization', 'Bearer ' + token);
         expect(response.status).toEqual(200);
         expect(response.body).toEqual({
-            id: 2,
+            id: 3,
             firstname: "ahmed",
             lastname: "hamed",
             username: "ahmed"

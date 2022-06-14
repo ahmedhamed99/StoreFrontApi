@@ -32,7 +32,7 @@ describe("order Model Tests",()=>{
         const createdOrder = await store.create(order) as unknown;
 
         expect(createdOrder).toEqual({
-            id: 1,
+            id: 2,
             status: "open",
             user_id: `${id}`
         });
@@ -40,24 +40,24 @@ describe("order Model Tests",()=>{
     it("index method should show all orders",async()=>{
         const orders = await store.index() as unknown;
         expect(orders).toEqual([{
-            id: 1,
+            id: 2,
             status: "open",
             user_id: `${id}`
         }]);
     });
     it("show method should show specified order",async()=>{
-        const order = await store.show('1') as unknown;
+        const order = await store.show('2') as unknown;
         expect(order).toEqual({
-            id: 1,
+            id: 2,
             status: "open",
             user_id: `${id}`
         });
     });
     
     it("delete method should delete specified order",async()=>{
-        const order = await store.delete('1') as unknown;
+        const order = await store.delete('2') as unknown;
         expect(order).toEqual({
-            id: 1,
+            id: 2,
             status: "open",
             user_id: `${id}`
         });
